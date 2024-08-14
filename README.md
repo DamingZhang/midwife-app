@@ -26,3 +26,15 @@ zsh: source ~/.zshrc
 ksh: . ~/.profile
 
 nvm install node --latest-npm
+
+npm install next-themes
+
+install shadcn form:
+
+npx shadcn-ui@latest init
+npx shadcn-ui@latest add form
+npx shadcn-ui@latest add input
+
+npm install react-phone-number-input --save
+
+npm install node-appwrite

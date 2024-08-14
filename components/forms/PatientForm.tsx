@@ -1,13 +1,13 @@
 "use client";
-
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+
 
 import { Form } from "@/components/ui/form";
-import { createUser } from "@/lib/actions/patient.actions";
+// import { createUser } from "@/lib/actions/patient.actions";
 import { UserFormValidation } from "@/lib/validation";
 
 import "react-phone-number-input/style.css";
@@ -37,11 +37,11 @@ export const PatientForm = () => {
         phone: values.phone,
       };
 
-      const newUser = await createUser(user);
+      // const newUser = await createUser(user);
 
-      if (newUser) {
-        router.push(`/patients/${newUser.$id}/register`);
-      }
+      // if (newUser) {
+      //   router.push(`/patients/${newUser.$id}/register`);
+      // }
     } catch (error) {
       console.log(error);
     }
@@ -62,7 +62,7 @@ export const PatientForm = () => {
           control={form.control}
           name="name"
           label="Full name"
-          placeholder="John Doe"
+          placeholder="Tiffany Wang"
           iconSrc="/assets/icons/user.svg"
           iconAlt="user"
         />
