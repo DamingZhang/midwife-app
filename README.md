@@ -30,7 +30,7 @@ nvm install node --latest-npm
 npm install next-themes
 
 install shadcn form:
-
+npm install @radix-ui/react-label @radix-ui/react-slot react-hook-form @hookform/resolvers zod
 npx shadcn-ui@latest init
 npx shadcn-ui@latest add form
 npx shadcn-ui@latest add input
@@ -38,3 +38,13 @@ npx shadcn-ui@latest add input
 npm install react-phone-number-input --save
 
 npm install node-appwrite
+npx shadcn-ui@latest add radio-group/npm install @radix-ui/react-radio-group
+
+npm install @radix-ui/react-select
+npm install react-datepicker --save
+
+npm install @radix-ui/react-textarea
+npm install --save react-dropzone
+npm install @radix-ui/react-checkbox
+npm install lucide-react
+npm i class-variance-authority

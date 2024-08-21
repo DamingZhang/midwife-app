@@ -22,9 +22,10 @@ import { PatientFormValidation } from "@/lib/validation";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "react-phone-number-input/style.css";
+import SubmitButton from "../SubmitButton";
 import CustomFormField, { FormFieldType } from "../CustomFormField";
 import { FileUploader } from "../FileUploader";
-import SubmitButton from "../SubmitButton";
+
 
 const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
@@ -230,7 +231,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
             name="primaryPhysician"
             label="Primary care physician"
-            placeholder="Select a physician"
+            placeholder="Select a midwife"
           >
             {Doctors.map((doctor, i) => (
               <SelectItem key={doctor.name + i} value={doctor.name}>
