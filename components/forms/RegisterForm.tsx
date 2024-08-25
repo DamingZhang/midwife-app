@@ -83,7 +83,7 @@ const RegisterForm = ({ user }: { user: User }) => {
         identificationDocument: values.identificationDocument
           ? formData
           : undefined,
-        privacyConsent: values.privacyConsent,
+        // privacyConsent: values.privacyConsent,
       };
 
       const newPatient = await registerPatient(patient);
@@ -188,7 +188,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="address"
               label="Address"
-              placeholder="14 street, New york, NY - 5101"
+              placeholder="48 Spring Rd, Hornby, Christchurch - 8025"
             />
 
             <CustomFormField
@@ -230,7 +230,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             fieldType={FormFieldType.SELECT}
             control={form.control}
             name="primaryPhysician"
-            label="Primary care physician"
+            label="Midwife"
             placeholder="Select a midwife"
           >
             {Doctors.map((doctor, i) => (
@@ -347,7 +347,7 @@ const RegisterForm = ({ user }: { user: User }) => {
           />
         </section>
 
-        <section className="space-y-6">
+        {/* <section className="space-y-6">
           <div className="mb-9 space-y-1">
             <h2 className="sub-header">Consent and Privacy</h2>
           </div>
@@ -374,7 +374,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             label="I acknowledge that I have reviewed and agree to the
             privacy policy"
           />
-        </section>
+        </section> */}
 
         <SubmitButton isLoading={isLoading}>Submit and Continue</SubmitButton>
       </form>
