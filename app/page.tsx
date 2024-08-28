@@ -5,16 +5,19 @@ export default function Home() {
   return (
     <div className="flex h-screen max-h-screen">
        <section className="remove-scrollbar container my-auto">
-       <div className="flex flex-row items-center max-w-[496px]">
-       <Image
-            src="/assets/icons/logo-2.png"
-            height={1000}
-            width={1000}
-            alt="patient"
-            className=" h-16 w-fit"
-          />
-          <div>WeCare</div>
-        </div>
+        <div className="flex flex-row items-center max-w-[496px] mb-5">
+            <a href="/">
+              <Image
+                src="/assets/icons/logo.png"
+                height={1000}
+                width={1000}
+                alt="patient"
+                className=" h-16 w-fit"
+              />
+              <div>WeCare</div>
+            </a>
+          </div>
+        
         <PatientForm/>
         <div className="text-14-regular mt-2 flex justify-between mb-8">
             <p className="justify-items-end text-dark-600 xl:text-left">

@@ -1,4 +1,4 @@
-export const GenderOptions = ["Male", "Female", "Other"];
+export const GenderOptions = ["Female", "Male", "Other"];
 
 export const PatientFormDefaultValues = {
   firstName: "",
@@ -6,7 +6,7 @@ export const PatientFormDefaultValues = {
   email: "",
   phone: "",
   birthDate: new Date(Date.now()),
-  gender: "Male" as Gender,
+  gender: "Female" as Gender,
   address: "",
   occupation: "",
   emergencyContactName: "",
@@ -27,44 +27,25 @@ export const PatientFormDefaultValues = {
 };
 
 export const IdentificationTypes = [
-  "Birth Certificate",
   "Driver's License",
+  "Birth Certificate",
   "Medical Insurance Card/Policy",
-  "Military ID Card",
-  "National Identity Card",
   "Passport",
-  "Resident Alien Card (Green Card)",
-  "Social Security Card",
-  "State ID Card",
-  "Student ID Card",
-  "Voter ID Card",
+  "Resident Visa",
 ];
 
 export const Doctors = [
-  {
-    image: "/assets/images/dr-green.png",
-    name: "John Green",
-  },
+ 
   {
     image: "/assets/images/dr-cameron.png",
     name: "Leila Cameron",
   },
-  {
-    image: "/assets/images/dr-livingston.png",
-    name: "David Livingston",
-  },
-  {
-    image: "/assets/images/dr-peter.png",
-    name: "Evan Peter",
-  },
+
   {
     image: "/assets/images/dr-powell.png",
     name: "Jane Powell",
   },
-  {
-    image: "/assets/images/dr-remirez.png",
-    name: "Alex Ramirez",
-  },
+
   {
     image: "/assets/images/dr-lee.png",
     name: "Jasmine Lee",
@@ -73,10 +54,7 @@ export const Doctors = [
     image: "/assets/images/dr-cruz.png",
     name: "Alyana Cruz",
   },
-  {
-    image: "/assets/images/dr-sharma.png",
-    name: "Hardik Sharma",
-  },
+
 ];
 
 export const StatusIcon = {
