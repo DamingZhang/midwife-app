@@ -27,13 +27,13 @@ export const AppointmentForm = ({
   patientId,
   type = "create",
   appointment,
-  setOpen,
+  // setOpen,
 }: {
   userId: string;
   patientId: string;
   type: "create" | "schedule" | "cancel";
   appointment?: Appointment;
-  setOpen?: Dispatch<SetStateAction<boolean>>;
+  // setOpen?: Dispatch<SetStateAction<boolean>>;
 }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -57,7 +57,7 @@ export const AppointmentForm = ({
     values: z.infer<typeof AppointmentFormValidation>
   ) => {
     setIsLoading(true);
-
+   
     let status;
     switch (type) {
       case "schedule":
@@ -69,7 +69,9 @@ export const AppointmentForm = ({
       default:
         status = "pending";
     }
-
+    console.log('type',type)
+  
+    
     try {
       if (type === "create" && patientId) {
         const appointment = {
@@ -81,10 +83,14 @@ export const AppointmentForm = ({
           status: status as Status,
           note: values.note,
         };
-
+        console.log('appointment0',appointment)
         const newAppointment = await createAppointment(appointment);
-
+        
+        console.log('newAppointment1',newAppointment)
+        
+        
         if (newAppointment) {
+          console.log('newAppointment2',newAppointment)
           form.reset();
           router.push(
             `/patients/${userId}/new-appointment/success?appointmentId=${newAppointment.$id}`

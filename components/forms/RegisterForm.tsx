@@ -182,6 +182,13 @@ const RegisterForm = ({ user }: { user: User }) => {
           </div>
 
           {/* Address & Occupation */}
+          <CustomFormField
+              fieldType={FormFieldType.INPUT}
+              control={form.control}
+              name="occupation"
+              label="NHI number"
+              placeholder="ABC1234"
+            />
           <div className="flex flex-col gap-6 xl:flex-row">
             <CustomFormField
               fieldType={FormFieldType.INPUT}
@@ -189,15 +196,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               name="address"
               label="Address"
               placeholder="48 Spring Rd, Hornby, Christchurch - 8025"
-            />
-
-            <CustomFormField
-              fieldType={FormFieldType.INPUT}
-              control={form.control}
-              name="occupation"
-              label="Occupation"
-              placeholder="Nurse"
-            />
+            />   
           </div>
 
           {/* Emergency Contact Name & Emergency Contact Number */}

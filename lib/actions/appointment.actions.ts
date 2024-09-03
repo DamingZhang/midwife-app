@@ -16,6 +16,13 @@ import { formatDateTime, parseStringify } from "../utils";
 //  CREATE APPOINTMENT
 export const createAppointment = async (
   appointment: CreateAppointmentParams
+  // userId: string;
+  // patient: string;
+  // primaryPhysician: string;
+  // reason: string;
+  // schedule: Date;
+  // status: Status;
+  // note: string | undefined;
 ) => {
   try {
     const newAppointment = await databases.createDocument(
@@ -24,8 +31,8 @@ export const createAppointment = async (
       ID.unique(),
       appointment
     );
-
-    revalidatePath("/admin");
+    console.log('Create appointment...')
+    // revalidatePath("/admin");
     return parseStringify(newAppointment);
   } catch (error) {
     console.error("An error occurred while creating a new appointment:", error);
