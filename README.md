@@ -48,3 +48,6 @@ npm install --save react-dropzone
 npm install @radix-ui/react-checkbox
 npm install lucide-react
 npm i class-variance-authority
+
+npm install @radix-ui/react-alert-dialog
+npm install input-otp

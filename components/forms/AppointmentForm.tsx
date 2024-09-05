@@ -50,6 +50,11 @@ export const AppointmentForm = ({
       reason: appointment ? appointment.reason : "",
       note: appointment?.note || "",
       cancellationReason: appointment?.cancellationReason || "",
+      // primaryPhysician:  "",
+      // schedule: new Date(Date.now()),
+      // reason:  "",
+      // note:  "",
+      // cancellationReason:  "",
     },
   });
 
@@ -69,7 +74,7 @@ export const AppointmentForm = ({
       default:
         status = "pending";
     }
-    console.log('type',type)
+    console.log('patientId',patientId)
   
     
     try {
@@ -83,6 +88,7 @@ export const AppointmentForm = ({
           status: status as Status,
           note: values.note,
         };
+  
         console.log('appointment0',appointment)
         const newAppointment = await createAppointment(appointment);
         
@@ -97,17 +103,17 @@ export const AppointmentForm = ({
           );
         }
       } else {
-        const appointmentToUpdate = {
-          userId,
-          appointmentId: appointment?.$id!,
-          appointment: {
-            primaryPhysician: values.primaryPhysician,
-            schedule: new Date(values.schedule),
-            status: status as Status,
-            cancellationReason: values.cancellationReason,
-          },
-          type,
-        };
+        // const appointmentToUpdate = {
+        //   userId,
+        //   appointmentId: appointment?.$id!,
+        //   appointment: {
+        //     primaryPhysician: values.primaryPhysician,
+        //     schedule: new Date(values.schedule),
+        //     status: status as Status,
+        //     cancellationReason: values.cancellationReason,
+        //   },
+        //   type,
+        // };
 
         // const updatedAppointment = await updateAppointment(appointmentToUpdate);
 
