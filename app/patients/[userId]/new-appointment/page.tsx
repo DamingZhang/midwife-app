@@ -3,9 +3,11 @@ import Image from "next/image";
 import { AppointmentForm } from "@/components/forms/AppointmentForm";
 import { getPatient } from "@/lib/actions/patient.actions";
 
-const NewAppointment = async ({ params: { userId } }: SearchParamProps) => {
+const Appointment = async ({ params: { userId } }: SearchParamProps) => {
+  console.log('userId',userId)
   const patient = await getPatient(userId);
-
+  
+  console.log("new appoint-patient",patient)
   return (
     <div className="flex h-screen max-h-screen">
       <section className="remove-scrollbar container my-auto">
@@ -44,4 +46,4 @@ const NewAppointment = async ({ params: { userId } }: SearchParamProps) => {
   );
 };
 
-export default NewAppointment;
+export default Appointment;

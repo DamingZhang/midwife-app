@@ -1,7 +1,7 @@
 "use server";
 
 import { ID,  Query } from "node-appwrite";
- import { InputFile } from "node-appwrite/file";
+import { InputFile } from "node-appwrite/file";
 
 import {
   BUCKET_ID,
@@ -100,9 +100,9 @@ export const getPatient = async (userId: string) => {
     const patients = await databases.listDocuments(
       DATABASE_ID!,
       PATIENT_COLLECTION_ID!,
-      [Query.equal("userId", [userId])]
+      [Query.equal("userId", [userId])]    
     );
-
+    console.log('mid getPatient',patients)
     return parseStringify(patients.documents[0]);
   } catch (error) {
     console.error(

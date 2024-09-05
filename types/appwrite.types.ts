@@ -11,7 +11,7 @@ export interface Patient extends Models.Document {
   occupation: string;
   emergencyContactName: string;
   emergencyContactNumber: string;
-  primaryPhysician: string;
+  // primaryPhysician: string;
   insuranceProvider: string;
   insurancePolicyNumber: string;
   allergies: string | undefined;
@@ -21,7 +21,7 @@ export interface Patient extends Models.Document {
   identificationType: string | undefined;
   identificationNumber: string | undefined;
   identificationDocument: FormData | undefined;
-  // privacyConsent: boolean;
+  privacyConsent: boolean;
 }
 
 export interface Appointment extends Models.Document {

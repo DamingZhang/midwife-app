@@ -50,11 +50,7 @@ export const AppointmentForm = ({
       reason: appointment ? appointment.reason : "",
       note: appointment?.note || "",
       cancellationReason: appointment?.cancellationReason || "",
-      // primaryPhysician:  "",
-      // schedule: new Date(Date.now()),
-      // reason:  "",
-      // note:  "",
-      // cancellationReason:  "",
+
     },
   });
 
