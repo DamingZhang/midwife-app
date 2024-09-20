@@ -15,12 +15,13 @@ import {
 } from "@/lib/actions/appointment.actions";
 import { getAppointmentSchema } from "@/lib/validation";
 import { Appointment } from "@/types/appwrite.types";
-
+import { Patient } from "@/types/appwrite.types";
 import "react-datepicker/dist/react-datepicker.css";
 
 import CustomFormField, { FormFieldType } from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { Form } from "../ui/form";
+import { getPatient } from "@/lib/actions/patient.actions";
 
 export const AppointmentForm = ({
   userId,
@@ -28,18 +29,29 @@ export const AppointmentForm = ({
   type = "create",
   appointment,
   // setOpen,
+  patient,
 }: {
   userId: string;
   patientId: string;
   type: "create" | "schedule" | "cancel";
   appointment?: Appointment;
   // setOpen?: Dispatch<SetStateAction<boolean>>;
+  patient:Patient;
 }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const AppointmentFormValidation = getAppointmentSchema(type);
-
+  const doctor = Doctors.find(
+    (doctor) => { 
+      console.log('AppointForm patient', patient);
+      if(patient){
+        return doctor.name === patient.primaryPhysician
+      }
+    }
+  );
+  console.log('AppointForm doctor', doctor);
+  
   const form = useForm<z.infer<typeof AppointmentFormValidation>>({
     resolver: zodResolver(AppointmentFormValidation),
     defaultValues: {
@@ -150,12 +162,25 @@ export const AppointmentForm = ({
 
         {type !== "cancel" && (
           <>
+        {/* { console.log('primaryPhysician',patient)}
+        {patient.primaryPhysician} */}
+           <div className="flex items-center gap-3">
+            <Image
+              src={doctor?.image!}
+              alt="doctor"
+              width={100}
+              height={100}
+              className="size-6"
+            />
+            <p className="whitespace-nowrap">{doctor?.name}</p>
+          </div>
             <CustomFormField
               fieldType={FormFieldType.SELECT}
               control={form.control}
               name="primaryPhysician"
               label="Midwife"
               placeholder="Select a midwife"
+              
             >
               {Doctors.map((doctor, i) => (
                 <SelectItem key={doctor.name + i} value={doctor.name}>

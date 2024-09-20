@@ -29,6 +29,7 @@ const Appointment = async ({ params: { userId } }: SearchParamProps) => {
             patientId={patient?.$id}
             userId={userId}
             type="create"
+            patient={patient}
           />
 
           <p className="copyright mt-10 py-12">© 2024 WeCare</p>
