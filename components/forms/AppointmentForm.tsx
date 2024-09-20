@@ -55,7 +55,7 @@ export const AppointmentForm = ({
   const form = useForm<z.infer<typeof AppointmentFormValidation>>({
     resolver: zodResolver(AppointmentFormValidation),
     defaultValues: {
-      primaryPhysician: appointment ? appointment?.primaryPhysician : "",
+      primaryPhysician: patient ? patient?.primaryPhysician : "",
       schedule: appointment
         ? new Date(appointment?.schedule!)
         : new Date(Date.now()),
@@ -82,7 +82,7 @@ export const AppointmentForm = ({
       default:
         status = "pending";
     }
-    console.log('patientId',patientId)
+    console.log('Appointment primaryPhysician',patient.primaryPhysician)
   
     
     try {
@@ -90,7 +90,7 @@ export const AppointmentForm = ({
         const appointment = {
           userId,
           patient: patientId,
-          primaryPhysician: values.primaryPhysician,
+          primaryPhysician: patient.primaryPhysician,
           schedule: new Date(values.schedule),
           reason: values.reason!,
           status: status as Status,
@@ -174,7 +174,7 @@ export const AppointmentForm = ({
             />
             <p className="whitespace-nowrap">{doctor?.name}</p>
           </div>
-            <CustomFormField
+            {/* <CustomFormField
               fieldType={FormFieldType.SELECT}
               control={form.control}
               name="primaryPhysician"
@@ -196,7 +196,7 @@ export const AppointmentForm = ({
                   </div>
                 </SelectItem>
               ))}
-            </CustomFormField>
+            </CustomFormField> */}
 
             <CustomFormField
               fieldType={FormFieldType.DATE_PICKER}
