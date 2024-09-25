@@ -32,17 +32,17 @@ export const PasskeyModal = () => {
       ? window.localStorage.getItem("accessKey")
       : null;
 
-  // useEffect(() => {
-  //   const accessKey = encryptedKey && decryptKey(encryptedKey);
+  useEffect(() => {
+    const accessKey = encryptedKey && decryptKey(encryptedKey);
 
-  //   if (path)
-  //     if (accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY!.toString()) {
-  //       setOpen(false);
-  //       router.push("/admin");
-  //     } else {
-  //       setOpen(true);
-  //     }
-  // }, [encryptedKey]);
+    if (path)
+      if (accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY!.toString()) {
+        setOpen(false);
+        router.push("/admin");
+      } else {
+        setOpen(true);
+      }
+  }, [encryptedKey]);
 
   const closeModal = () => {
     setOpen(false);

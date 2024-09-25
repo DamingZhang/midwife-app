@@ -40,7 +40,7 @@ export const PatientFormValidation = z.object({
       (emergencyContactNumber) => /^\+\d{10,15}$/.test(emergencyContactNumber),
       "Invalid phone number"
     ),
-  primaryPhysician: z.string().min(2, "Select a midwife"),
+  primaryPhysician: z.string().min(1, "Select a midwife"),
   insuranceProvider: z
     .string()
     .max(50, "Insurance name must be at most 50 characters"),

@@ -21,7 +21,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import CustomFormField, { FormFieldType } from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { Form } from "../ui/form";
-import { getPatient } from "@/lib/actions/patient.actions";
 
 export const AppointmentForm = ({
   userId,
@@ -44,7 +43,6 @@ export const AppointmentForm = ({
   const AppointmentFormValidation = getAppointmentSchema(type);
   const doctor = Doctors.find(
     (doctor) => { 
-      console.log('AppointForm patient', patient);
       if(patient){
         return doctor.name === patient.primaryPhysician
       }
@@ -145,7 +143,7 @@ export const AppointmentForm = ({
       buttonLabel = "Schedule Appointment";
       break;
     default:
-      buttonLabel = "Submit Apppointment";
+      buttonLabel = "Submit Appointment";
   }
 
   return (
@@ -162,9 +160,8 @@ export const AppointmentForm = ({
 
         {type !== "cancel" && (
           <>
-        {/* { console.log('primaryPhysician',patient)}
-        {patient.primaryPhysician} */}
-           <div className="flex items-center gap-3">
+           <div className="flex items-center gap-3"> 
+            <div>Your midwife</div>
             <Image
               src={doctor?.image!}
               alt="doctor"

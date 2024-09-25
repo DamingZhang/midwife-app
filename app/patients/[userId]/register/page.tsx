@@ -6,10 +6,12 @@ import { getPatient, getUser } from "@/lib/actions/patient.actions";
 
 const Register = async ({ params: { userId } }: SearchParamProps) => {
   const user = await getUser(userId);
-  console.log("Register, user", user)
+  console.log("Register, userId", userId)
   const patient = await getPatient(userId);
-console.log("Register, patient", patient)
+  
   if (patient) redirect(`/patients/${userId}/new-appointment`);
+  
+  console.log("Register, patient", patient)
 
   return (
     <div className="flex h-screen max-h-screen">
@@ -22,7 +24,7 @@ console.log("Register, patient", patient)
               height={1000}
               width={1000}
               alt="patient"
-              className=" h-16 w-fit"
+              className="h-16 w-fit"
               />
               <div>WeCare</div>
             </a>

@@ -28,6 +28,7 @@ import { FileUploader } from "../FileUploader";
 
 
 const RegisterForm = ({ user }: { user: User }) => {
+  console.log('RegisterForm', user)
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -43,7 +44,7 @@ const RegisterForm = ({ user }: { user: User }) => {
 
   const onSubmit = async (values: z.infer<typeof PatientFormValidation>) => {
     setIsLoading(true);
-
+    console.log('RegisterForm submt')
     // Store file info in form data as
     let formData;
     if (
@@ -85,11 +86,11 @@ const RegisterForm = ({ user }: { user: User }) => {
           : undefined,
         // privacyConsent: values.privacyConsent,
       };
-
+      console.log('RegisterForm patient',patient)
       const newPatient = await registerPatient(patient);
-
+      console.log('patient action', newPatient)
       if (newPatient) {
-        router.push(`/patients/${user.$id}/new-appointment`);
+        // router.push(`/patients/${user.$id}/new-appointment`);
       }
     } catch (error) {
       console.log(error);
