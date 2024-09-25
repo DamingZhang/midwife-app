@@ -90,7 +90,7 @@ const RegisterForm = ({ user }: { user: User }) => {
       const newPatient = await registerPatient(patient);
       console.log('patient action', newPatient)
       if (newPatient) {
-        // router.push(`/patients/${user.$id}/new-appointment`);
+         router.push(`/patients/${user.$id}/new-appointment`);
       }
     } catch (error) {
       console.log(error);

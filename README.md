@@ -51,3 +51,7 @@ npm i class-variance-authority
 
 npm install @radix-ui/react-alert-dialog
 npm install input-otp
+
+npm install shadcn@latest add table
+npm install @tanstack/react-table
+npm install @radix-ui/react-dropdown-menu
