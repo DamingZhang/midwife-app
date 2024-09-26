@@ -8,7 +8,7 @@ import { formatDateTime } from "@/lib/utils";
 import { Appointment } from "@/types/appwrite.types";
 
 // import { AppointmentModal } from "../AppointmentModal";
-// import { StatusBadge } from "../StatusBadge";
+import { StatusBadge } from "../StatusBadge";
 
 export const columns: ColumnDef<Appointment>[] = [
   {
@@ -32,7 +32,7 @@ export const columns: ColumnDef<Appointment>[] = [
       const appointment = row.original;
       return (
         <div className="min-w-[115px]">
-          {/* <StatusBadge status={appointment.status} /> */}
+          <StatusBadge status={appointment.status} />
         </div>
       );
     },
@@ -68,7 +68,7 @@ export const columns: ColumnDef<Appointment>[] = [
             height={100}
             className="size-8"
           />
-          <p className="whitespace-nowrap">Dr. {doctor?.name}</p>
+          <p className="whitespace-nowrap">{doctor?.name}</p>
         </div>
       );
     },
