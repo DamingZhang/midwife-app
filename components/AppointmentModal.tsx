@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import { useState } from "react";
 
@@ -12,27 +12,29 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Appointment } from "@/types/appwrite.types";
-
+import { Patient } from "@/types/appwrite.types";
 import { AppointmentForm } from "./forms/AppointmentForm";
 
 import "react-datepicker/dist/react-datepicker.css";
-import { getPatient } from "@/lib/actions/patient.actions";
 
-export const AppointmentModal = async({
+
+export const AppointmentModal = ({
   patientId,
   userId,
   appointment,
   type,
+  patient,
 }: {
   patientId: string;
   userId: string;
   appointment?: Appointment;
   type: "schedule" | "cancel";
+  patient?:Patient;
   title: string;
   description: string;
 }) => {
   const [open, setOpen] = useState(false);
-  const patient = await getPatient(userId)
+ 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
@@ -56,7 +58,7 @@ export const AppointmentModal = async({
           patientId={patientId}
           type={type}
           appointment={appointment}
-          // setOpen={setOpen}
+          setOpen={setOpen}
           patient={patient}
         />
       </DialogContent>

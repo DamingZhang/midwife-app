@@ -121,7 +121,7 @@ export const sendSMSNotification = async (userId: string, content: string) => {
 export const updateAppointment = async ({
   appointmentId,
   userId,
-  timeZone,
+  // timeZone,
   appointment,
   type,
 }: UpdateAppointmentParams) => {
@@ -136,11 +136,11 @@ export const updateAppointment = async ({
 
     if (!updatedAppointment) throw Error;
 
-    // const smsMessage = `Greetings from WeCare. ${type === "schedule" ? `Your appointment is confirmed for ${formatDateTime(appointment.schedule!, timeZone).dateTime} with ${appointment.primaryPhysician}` : `We regret to inform that your appointment for ${formatDateTime(appointment.schedule!, timeZone).dateTime} is cancelled. Reason:  ${appointment.cancellationReason}`}.`;
-    // await sendSMSNotification(userId, smsMessage);
+    const smsMessage = `Greetings from WeCare. ${type === "schedule" ? `Your appointment is confirmed for ${formatDateTime(appointment.schedule!, ).dateTime} with ${appointment.primaryPhysician}` : `We regret to inform that your appointment for ${formatDateTime(appointment.schedule!, ).dateTime} is cancelled. Reason:  ${appointment.cancellationReason}`}.`;
+    await sendSMSNotification(userId, smsMessage);
 
-    // revalidatePath("/admin");
-    // return parseStringify(updatedAppointment);
+    revalidatePath("/admin");
+    return parseStringify(updatedAppointment);
   } catch (error) {
     console.error("An error occurred while scheduling an appointment:", error);
   }

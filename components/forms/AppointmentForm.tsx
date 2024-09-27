@@ -22,20 +22,21 @@ import CustomFormField, { FormFieldType } from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { Form } from "../ui/form";
 
-export const AppointmentForm = ({
+
+export const AppointmentForm =  ({
   userId,
   patientId,
   type = "create",
   appointment,
-  // setOpen,
+  setOpen,
   patient,
 }: {
   userId: string;
   patientId: string;
   type: "create" | "schedule" | "cancel";
   appointment?: Appointment;
-  // setOpen?: Dispatch<SetStateAction<boolean>>;
-  patient:Patient;
+  setOpen?: Dispatch<SetStateAction<boolean>>;
+  patient?:Patient;
 }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -80,7 +81,7 @@ export const AppointmentForm = ({
       default:
         status = "pending";
     }
-    console.log('Appointment primaryPhysician',patient.primaryPhysician)
+    console.log('Appointment primaryPhysician',patient?.primaryPhysician)
   
     
     try {
@@ -88,7 +89,7 @@ export const AppointmentForm = ({
         const appointment = {
           userId,
           patient: patientId,
-          primaryPhysician: patient.primaryPhysician,
+          primaryPhysician: patient?.primaryPhysician,
           schedule: new Date(values.schedule),
           reason: values.reason!,
           status: status as Status,
@@ -109,24 +110,25 @@ export const AppointmentForm = ({
           );
         }
       } else {
-        // const appointmentToUpdate = {
-        //   userId,
-        //   appointmentId: appointment?.$id!,
-        //   appointment: {
-        //     primaryPhysician: values.primaryPhysician,
-        //     schedule: new Date(values.schedule),
-        //     status: status as Status,
-        //     cancellationReason: values.cancellationReason,
-        //   },
-        //   type,
-        // };
+        const appointmentToUpdate = {          
+          appointmentId: appointment?.$id!,
+          userId,
+          // timezone,
+          appointment: {
+            primaryPhysician: patient?.primaryPhysician,
+            schedule: new Date(values.schedule),
+            status: status as Status,
+            cancellationReason: values.cancellationReason,
+          },
+          type,
+        };
 
-        // const updatedAppointment = await updateAppointment(appointmentToUpdate);
+        const updatedAppointment = await updateAppointment(appointmentToUpdate);
 
-        // if (updatedAppointment) {
-        //   setOpen && setOpen(false);
-        //   form.reset();
-        // }
+        if (updatedAppointment) {
+          setOpen && setOpen(false);
+          form.reset();
+        }
       }
     } catch (error) {
       console.log(error);
