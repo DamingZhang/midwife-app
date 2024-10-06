@@ -55,3 +55,13 @@ npm install input-otp
 npm install shadcn@latest add table
 npm install @tanstack/react-table
 npm install @radix-ui/react-dropdown-menu
+
+Twilio: 41KA7QRXSGADWNJ43YXRXCMU
+(From) +1 3158710854
+
+13158733121
+
+Testing & Security
+Sentry set up:
+cd midwife-app
+npx @sentry/wizard@latest -i nextjs --url https://sentry.io --org student-ws6 --project javascript-nextjs

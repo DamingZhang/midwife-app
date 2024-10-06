@@ -6,6 +6,7 @@ import { ID, Query } from "node-appwrite";
 import { Appointment } from "@/types/appwrite.types";
 
 import {
+  API_KEY, PROJECT_ID, ENDPOINT,
   APPOINTMENT_COLLECTION_ID,
   DATABASE_ID,
   databases,
@@ -136,8 +137,36 @@ export const updateAppointment = async ({
 
     if (!updatedAppointment) throw Error;
 
-    const smsMessage = `Greetings from WeCare. ${type === "schedule" ? `Your appointment is confirmed for ${formatDateTime(appointment.schedule!, ).dateTime} with ${appointment.primaryPhysician}` : `We regret to inform that your appointment for ${formatDateTime(appointment.schedule!, ).dateTime} is cancelled. Reason:  ${appointment.cancellationReason}`}.`;
+    const smsMessage = `Greetings from WeCare Midwife. ${type === "schedule" ? `Your appointment is confirmed for ${formatDateTime(appointment.schedule!, ).dateTime} with ${appointment.primaryPhysician}` : `We regret to inform that your appointment for ${formatDateTime(appointment.schedule!, ).dateTime} is cancelled. Reason:  ${appointment.cancellationReason}`}.`;
     await sendSMSNotification(userId, smsMessage);
+
+
+  //   const sdk = require('node-appwrite');
+
+  //   // Init SDK
+  //   const client = new sdk.Client();
+    
+  //   const messaging = new sdk.Messaging(client);
+    
+  //   client
+  //       .setEndpoint(ENDPOINT) // Your API Endpoint
+  //       .setProject(PROJECT_ID) // Your project ID
+  //       .setKey(API_KEY) // Your secret API key
+  //   ;
+    
+  //   const message = await messaging.createEmail(
+  //     ID.unique(),                             // messageId
+  //     " Test subject",                         // subject
+  //     smsMessage,                              // content
+  //     [],                                      // topics (optional)
+  //     [userId],                                // users (optional)
+  //     [],                                      // targets (optional)
+  //     [],                                      // cc (optional)
+  //     [],                                      // bcc (optional)
+  //     false,                                   // draft (optional)
+  //     false,                                   // html (optional)
+  //     ''                                       // scheduledAt (optional)
+  // );
 
     revalidatePath("/admin");
     return parseStringify(updatedAppointment);
