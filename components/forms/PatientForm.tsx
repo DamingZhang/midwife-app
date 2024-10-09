@@ -29,16 +29,14 @@ export const PatientForm = () => {
 
   const onSubmit = async (values: z.infer<typeof UserFormValidation>) => {
     setIsLoading(true);
-
+  
     try {
       const user = {
         name: values.name,
         email: values.email,
         phone: values.phone,
-      };
-
+      }; 
       const newUser = await createUser(user);
-      console.log('PForm',newUser)
       if (newUser) {
         router.push(`/patients/${newUser.$id}/register`);
       }
@@ -85,7 +83,7 @@ export const PatientForm = () => {
           placeholder="+64 1234567"
         />
 
-        <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
+        <SubmitButton isLoading={isLoading}>Get Started!</SubmitButton>
       </form>
     </Form>
   );
