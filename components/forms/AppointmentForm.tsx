@@ -204,6 +204,7 @@ export const AppointmentForm =  ({
               label="Expected appointment date"
               showTimeSelect
               dateFormat="MM/dd/yyyy  -  h:mm aa"
+              disabled={type === "schedule"}
             />
 
             <div
