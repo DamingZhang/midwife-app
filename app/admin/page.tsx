@@ -1,29 +1,19 @@
-import Image from "next/image";
-import Link from "next/link";
+
+// import Image from "next/image";
+// import Link from "next/link";
 
 import { StatCard } from "@/components/StatCard";
 import { columns } from "@/components/table/columns";
 import { DataTable } from "@/components/table/DataTable";
 import { getRecentAppointmentList } from "@/lib/actions/appointment.actions";
-
+import { Header } from "@/components/AdminHeader"
 const Admin = async () => {
   const appointments = await getRecentAppointmentList();
- console.log('admin page appointments', appointments)
+  console.log('admin page appointments', appointments)
+
   return (
     <div className="mx-auto flex max-w-7xl flex-col space-y-14">
-      <header className="admin-header">
-        <Link href="/" className="cursor-pointer">
-          <Image
-            src="/assets/icons/logo.png"
-            height={40}
-            width={160}
-            alt="logo"
-            className="h-8 w-fit"
-          />
-        </Link>
-
-        <p className="text-16-semibold">Admin Dashboard</p>
-      </header>
+      <Header/>
 
       <main className="admin-main">
         <section className="w-full space-y-4">
