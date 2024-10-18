@@ -28,7 +28,7 @@ export const Header = () => {
       </Link>
 
       <p className="text-16-semibold cursor-pointer" onClick={handleLogoutClick}>
-        Admin Dashboard
+        Logout
       </p>
     </header>
   );
